@@ -1,0 +1,24 @@
+{
+    "family": "sctp-cloud-infra_yuyuan",
+    "executionRoleArn": "arn:aws:ecs:ap-southeast-1:255945442255:cluster/ecsTaskExecutionRol",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "sctp-cloud-infra_yuyuan",
+            "image": "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/sctp-cloud-infra_enchen:latest", 
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024"
+}
