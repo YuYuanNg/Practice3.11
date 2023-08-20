@@ -37,10 +37,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3 #changed from v2 to v3 as node 16 uses v3
+      uses: actions/checkout@v2
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1 #changed from  to no version as default is node 16
+      uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -48,13 +48,13 @@ jobs:
 
     - name: Login to Amazon ECR
       id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1 #changed from  to no version as default is node 16
+      uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: yuyuan_ecr3_11 # manual create a repo and add in ECR repo name
+        ECR_REPOSITORY: yuyuan_3.5
         IMAGE_TAG: latest
       run: |
         # Build a docker container and
@@ -66,16 +66,16 @@ jobs:
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1 #changed from  to no version as default is node 16
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ecs-task-definition.json
-        container-name: sctp-cloud-infra_enchencontainer # need to change this cluster name to own?
+        container-name: task-family
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1 #changed from @v1 to no version as default is node 16
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: task-services # this will fail as need to run the "push one time and fail this area, but cluster will be created, after that push one more time for service to be added manual in console and run again."
-        cluster: yuyuan-cluster # need to change this cluster name to own?
+        service: task-services
+        cluster: yuyuan-cluster
         wait-for-service-stability: true
