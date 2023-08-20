@@ -68,8 +68,8 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: 3.11-sctp-cloud-infra
-        container-name: 3.11-ecs-task
+        task-definition: yuyuan-task-family
+        container-name: yuyuan-container
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
