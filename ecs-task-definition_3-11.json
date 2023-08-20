@@ -1,6 +1,6 @@
 {
     "family": "sctp-cloud-infra_yuyuan",
-    "executionRoleArn": "arn:aws:ecs:ap-southeast-1:255945442255:cluster/ecsTaskExecutionRol",
+    "executionRoleArn": "arn:aws:ecs:ap-southeast-1:255945442255:task/yuyuan-cluster/360f78635d2f4631a9b9c4e6395e8239",
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
