@@ -73,9 +73,9 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition #changed from @v1 to no version as default is node 16
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1 #changed from @v1 to no version as default is node 16
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ecs-service_enchen # this will fail as need to run the "push one time and fail this area, but cluster will be created, after that push one more time for service to be added manual in console and run again."
-        cluster: 3_11clusterEnchen # need to change this cluster name to own?
+        service: task-services # this will fail as need to run the "push one time and fail this area, but cluster will be created, after that push one more time for service to be added manual in console and run again."
+        cluster: yuyuan-cluster # need to change this cluster name to own?
         wait-for-service-stability: true
