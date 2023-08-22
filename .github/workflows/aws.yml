@@ -68,7 +68,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: yuyuan-task-family
+        task-definition: ecs-task-definition_3-11
         container-name: yuyuan-container
         image: ${{ steps.build-image.outputs.image }}
 
