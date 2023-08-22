@@ -1,6 +1,6 @@
 {
     "family": "sctp-cloud-infra_yuyuan",
-    "executionRoleArn": "arn:aws:ecs:ap-southeast-1:255945442255:task/yuyuan-cluster/360f78635d2f4631a9b9c4e6395e8239",
+    "executionRoleArn": "aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com",
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
