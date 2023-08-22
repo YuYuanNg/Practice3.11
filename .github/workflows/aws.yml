@@ -68,7 +68,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ecs-task-definition_3-11
+        task-definition: ecs-task-definition_3-11.json
         container-name: sctp-cloud-infra_yuyuan
         image: ${{ steps.build-image.outputs.image }}
 
