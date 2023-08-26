@@ -54,8 +54,8 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: yuyuan_3.5
-        IMAGE_TAG: firstimage
+        ECR_REPOSITORY: yuyuan-ecr
+        IMAGE_TAG: latest
       run: |
         # Build a docker container and
         # push it to ECR so that it can
