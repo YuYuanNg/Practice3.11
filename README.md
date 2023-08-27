@@ -23,6 +23,10 @@ A brief description of what tools and procedure used in this assignment.
 
 [Creating a task definition using the console](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-task-definition.html)
 
+### Dockerfile
+
+[Containerize an application](https://docs.docker.com/get-started/02_our_app/)
+
 #### READme.md
 
 Include the overall steps and tools used in this assignment. 
